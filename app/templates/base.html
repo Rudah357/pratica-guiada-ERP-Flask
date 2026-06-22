@@ -9,7 +9,7 @@
 </head>
 <body class="bg-light">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 shadow"> 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 shadow">
         <div class="container">
             <a class="navbar-brand fw-bold" href="/">
                 <i class="bi bi-cpu"></i> Sistema ERP
@@ -17,7 +17,6 @@
 
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-3 gap-2">
-
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('web.listar_produtos_view')}}">
                             <i class="bi bi-box-seam"></i> Produtos
@@ -25,14 +24,14 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('web.listar_produtos_view')}}">
+                        <a class="nav-link" href="{{ url_for('web.listar_categorias_view')}}">
                             <i class="bi bi-tags"></i> Categoria
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('web.listar_produtos_view')}}">
-                            <i class="bi bi-people"></i> Usuario
+                            <i class="bi bi-people"></i> Usuários
                         </a>
                     </li>
 
@@ -42,14 +41,14 @@
     </nav>
 
     <div class="container">
-        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
-                {% for categorias, mensagem in messages %}
-                <div class="alert alert-{{ categoria }} alert-dismissible fade show shadow-sm" role="alert">
-                    {{ mensagem }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                    </button>
-                </div>
+                {% for categoria, mensagem in messages %}
+                    <div class="alert alert-{{ categoria }} alert-dismissible fade show shadow-sm" role="alert">
+                        {{ mensagem }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
                 {% endfor %}
             {% endif %}
         {% endwith %}
