@@ -1,47 +1,41 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
 
     <div class="d-flex justify-content-between align-items-center mb-4">
-
         <h2 class="h3 text-secondary">
-            <i class="bi bi-tags"></i> Divisões de Categorias
+            <i class="bi bi-people"></i> Gerenciamento de Usuários
         </h2>
-        <a href="{{ url_for('web.nova_categoria_view')}}" class="btn btn-success shadow-sm">
-            <i class="bi bi-tag"></i> Adicionar Categoria
+        <a href="{{ url_for('web.novo_usuario_view') }}" class="btn btn-primary shadow-sm">
+            <i class="bi bi-person-plus"></i> Novo Usuário
         </a>
-
     </div>
 
     <div class="card shadow border-0">
         <div class="card-body p-0">
             <table class="table table-hover table-striped mb-0 text-center align-middle">
+
                 <thead class="table-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Nome da Categoria</th>
-                        <th>Produtos Vinculados</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {% for categoria in categorias %}
 
+                <tbody>
+                    {% for usuario in usuarios %}
                         <tr>
-                            <td class="fw-bold">{{ categoria.id}}</td>
-                            <td>{{ categoria.nome}}</td>
+                            <td class="fw-bold">{{ usuario.id }}</td>
+                            <td>{{ usuario.nome }}</td>
+                            <td>{{ usuario.email }}</td>
                             <td>
-                                <span class="badge bg-secondary">
-                                    {{ categoria.produtos|length }} itens
-                                </span>
-                            </td>
-                            <td>
-                                <div class="d-flex justify-content-center gap-2">
-                                    <a href="{{ url_for('web.editar_categoria_view', id=categoria.id)}}" class="btn btn-sm btn-outline-primary">
+                                <div class="d-flex justify-content-between-center gap-2">
+                                    <a href="{{ url_for('web.editar_usuario_view', id=usuario.id) }}" class="btn btn-sm btn-outline-primary">
                                         <i class="bi bi-pencil"></i>
                                     </a>
-
-                                    <form action="{{ url_for('web.excluir_categoria_view', id=categoria.id) }}" method="POST" onsubmit="return confirm('Excluir a categoria {{categoria.nome}}?');">
+                                    <form action="{{ url_for('web.excluir_usuario_view', id=usuario.id) }}" method="POST" onsubmit="return confirm('Deseja excluir permanentemente o usuário {{ usuario.nome }}?');">
                                         <button class="btn btn-sm btn-outline-danger">
                                             <i class="bi bi-trash"></i>
                                         </button>
@@ -49,15 +43,15 @@
                                 </div>
                             </td>
                         </tr>
-
                     {% else %}
                         <tr>
                             <td colspan="4" class="text-muted py-4">
-                                Nenhuma categoria adicionada.
+                                Nenhum usuário cadastrado.
                             </td>
                         </tr>
                     {% endfor %}
                 </tbody>
+
             </table>
         </div>
     </div>
