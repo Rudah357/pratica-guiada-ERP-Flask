@@ -118,7 +118,7 @@ def novo_usuario_view():
         email = request.form.get("email")
         senha = request.form.get("senha")
 
-        sucesso, msg = usuarios_controller.salvar_usuario(nome, email, senha, usuario_id=id)
+        sucesso, msg = usuarios_controller.salvar_usuario(nome, email, senha)
 
         flash(msg, "success" if sucesso else "danger")
 
