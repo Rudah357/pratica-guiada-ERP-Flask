@@ -6,7 +6,7 @@ web_bp = Blueprint("web", __name__)
 
 @web_bp.route("/")
 def index():
-    return redirect(url_for("web.listar_produtos_view"))
+    return redirect(url_for("dashbord.html"))
 
 # ROTAS DE PRODUTOS ====================================================================
 
