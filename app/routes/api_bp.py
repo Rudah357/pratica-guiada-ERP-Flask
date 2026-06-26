@@ -1,9 +1,9 @@
-from flask import Blueprint, jsonify
-
+from flask import Blueprint, jsonify, render_template
 from app.models import Categoria, Produto, Usuario
 
 
 api_bp = Blueprint('api', __name__, url_prefix="/api")
+
 
 @api_bp.route("/produto", methods=["GET"])
 def get_produto():

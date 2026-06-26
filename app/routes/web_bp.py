@@ -6,7 +6,17 @@ web_bp = Blueprint("web", __name__)
 
 @web_bp.route("/")
 def index():
-    return redirect(url_for("dashbord.html"))
+
+    total_produtos = len(produtos_controller.listar_todos_produtos())
+    total_categorias = len(categoria_controller.listar_todas_categorias())
+    total_usuarios = len(usuarios_controller.listar_todos_usuarios())
+    
+    return render_template(
+        "dashbord.html", 
+        total_produtos=total_produtos, 
+        total_categorias=total_categorias, 
+        total_usuarios=total_usuarios
+    )
 
 # ROTAS DE PRODUTOS ====================================================================
 
